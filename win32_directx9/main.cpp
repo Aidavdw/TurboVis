@@ -54,12 +54,12 @@ int main(int, char**)
     ImPlot::CreateContext(); // Turbovis
     ImGuiIO& io = ImGui::GetIO(); (void)io;
     ImFont* normalFont = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\segoeui.ttf", 30.0f); // WINDOWS FONT
-    normalFont->Scale = 0.6;
+    if (normalFont)
+        normalFont->Scale = 0.6;
 
 
 
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
-    //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
     io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
     io.IniFilename = "turbovis.ini";

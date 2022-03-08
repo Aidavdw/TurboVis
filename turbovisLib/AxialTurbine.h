@@ -17,6 +17,8 @@ namespace TurboVis
         void CalculateVelocityTriangles() override;
 
         void ShowFlowAngleSettings(bool bRepeatedStage) override;
+
+        void DrawAirfoilPlot(const int labelVerbosity, const bool bAllowAirfoilEdit, const int triangleDisplayLevel, const float rotorPitch, const float statorPitch, const bool bDisplayAngles, const bool bAnimate) override;
     };
 
 }
