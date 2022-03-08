@@ -19,12 +19,14 @@ void TurboVis::DisplayMainMenu(Stage* stage)
         switch (currentTurbomachineType)
         {
         case 0:
-            //std::cout << "Switching to Compressor";
-            *stage = AxialCompressor();
+            std::cout << "Switching to Compressor";
+            delete stage;
+            stage = new AxialCompressor();
             break;
         case 1:
-            //std::cout << "Changing Turbine";
-            *stage = AxialTurbine();
+            std::cout << "Changing to Turbine";
+            delete stage;
+            stage = new AxialTurbine();
         }
     }
 

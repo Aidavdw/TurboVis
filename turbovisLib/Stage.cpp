@@ -98,10 +98,6 @@ void TurboVis::Stage::PlotVelocityTriangles()
     ImGui::End();
 }
 
-void TurboVis::Stage::CalculateVelocityTriangles()
-{
-}
-
 void TurboVis::Stage::DisplayAirfoils()
 {
     if (!bShowAirfoilPlotWindow)
@@ -257,11 +253,3 @@ TurboVis::Vec TurboVis::Stage::AddAirfoilToPlot(const std::string& label, const 
 
 }
 
-void TurboVis::Stage::ShowFlowAngleSettings(bool bRepeatedStage)
-{
-    
-}
-
-void TurboVis::Stage::DrawAirfoilPlot(const int labelVerbosity, const bool bAllowAirfoilEdit, const int triangleDisplayLevel, const float rotorPitch, const float statorPitch, const bool bDisplayAngles, const bool bAnimate)
-{
-}

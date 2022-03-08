@@ -14,11 +14,20 @@ namespace TurboVis
             Stage(flowCoefficient, workCoefficent, degreeOfReaction, rotationalSpeed)
         {};
 
-        void CalculateVelocityTriangles() override;
+        ~AxialCompressor()
+        {
+            std::cout << "Destroying axial compressor" << std::endl;
+        };
 
-        void ShowFlowAngleSettings(bool bRepeatedStage) override;
 
-        void DrawAirfoilPlot(const int labelVerbosity, const bool bAllowAirfoilEdit, const int triangleDisplayLevel, const float rotorPitch, const float statorPitch, const bool bDisplayAngles, const bool bAnimate) override;
+        /* Virtual functions, strategy pattern*/
+    public:
+        virtual void CalculateVelocityTriangles();
+    protected:
+        // Shows the a0 & a3 flow angles. Different for types of stages, so defined in subclass.
+        virtual void ShowFlowAngleSettings(bool bRepeatedStage);
+
+        virtual void DrawAirfoilPlot(const int labelVerbosity, const bool bAllowAirfoilEdit, const int triangleDisplayLevel, const float rotorPitch, const float statorPitch, const bool bDisplayAngles, const bool bAnimate);
     };
 
 }

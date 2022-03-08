@@ -3,6 +3,8 @@
 #include "Vec.h"
 #include <vector>
 #include <string>
+#include <iostream>
+
 #include "imgui.h"
 #include "implot.h"
 
@@ -12,14 +14,17 @@ namespace TurboVis
     class Stage
     {
     public:
-        Stage() = default;
-
         Stage(const float flowCoefficient, const float workCoefficent, const float degreeOfReaction, const float rotationalSpeed) :
             flowCoefficient(flowCoefficient),
             workCoefficient(workCoefficent),
             degreeOfReaction(degreeOfReaction),
             rotationalSpeed(rotationalSpeed)
         {};
+
+        virtual ~Stage()
+        {
+            std::cout << "Destroying base stage" << std::endl;
+        };
 
     public:
 
@@ -80,16 +85,18 @@ namespace TurboVis
         // Displays the windows showing the airfoils. Depends on child implementation of ShowFlowAngleSettings(), DrawAirfoilPlot().
         void DisplayAirfoils();
 
-        virtual void CalculateVelocityTriangles();
-
     protected:
         // Plots the rotor in PlotAirfoil();
         Vec AddAirfoilToPlot(const std::string& label, const Vec leadingEdge, const Vec Inflow, const Vec Outflow, ImPlotPoint& trailingEdgePoint, ImPlotPoint& curvatureControl, const int labelVerbosity, const bool bAllowAirfoilEdit, const float bladePitch, const float animationFrac = 0, int baseID = 0);
 
+    /* Virtual functions, strategy pattern*/
+    public:
+        virtual void CalculateVelocityTriangles() = 0;
+    protected:
         // Shows the a0 & a3 flow angles. Different for types of stages, so defined in subclass.
-        virtual void ShowFlowAngleSettings(bool bRepeatedStage);
+        virtual void ShowFlowAngleSettings(bool bRepeatedStage) = 0;
 
-        virtual void DrawAirfoilPlot(const int labelVerbosity, const bool bAllowAirfoilEdit, const int triangleDisplayLevel, const float rotorPitch, const float statorPitch, const bool bDisplayAngles, const bool bAnimate);
+        virtual void DrawAirfoilPlot(const int labelVerbosity, const bool bAllowAirfoilEdit, const int triangleDisplayLevel, const float rotorPitch, const float statorPitch, const bool bDisplayAngles, const bool bAnimate) = 0;
     };
 
 
