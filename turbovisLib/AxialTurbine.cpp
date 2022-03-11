@@ -59,7 +59,7 @@ void TurboVis::AxialTurbine::DrawAirfoilPlot(const int labelVerbosity, const boo
         animationFrac = 0.;
 
     // stator
-    static ImPlotPoint statorTrailingEdgePoint = ImPlotPoint(-0.2f, 1.f);
+    static ImPlotPoint statorTrailingEdgePoint = ImPlotPoint(0.25f, 1.f);
     static ImPlotPoint statorCurvatureControl = ImPlotPoint(-0.25f, 0.5f);
     Vec statorLeadingEdge;
     Vec inflowVec = Vec(stageInflowAngle);
@@ -70,7 +70,7 @@ void TurboVis::AxialTurbine::DrawAirfoilPlot(const int labelVerbosity, const boo
 
     // rotor
     static ImPlotPoint rotorTrailingEdgePoint = ImPlotPoint(0.7f, 3.4f);
-    static ImPlotPoint rotorCurvatureControl = ImPlotPoint(-0.5f, 3.f);
+    static ImPlotPoint rotorCurvatureControl = ImPlotPoint(0.5f, 3.f);
     Vec rotorLeadingEdge = V1 * scale * (1 + 2 * offsetFromLE) + statorTrailingEdge;
     Vec rotorTrailingEdge = AddAirfoilToPlot("Stator", rotorLeadingEdge, W1, W2, rotorTrailingEdgePoint, rotorCurvatureControl, labelVerbosity, bAllowAirfoilEdit, rotorPitch, 0, 2);
 
@@ -89,7 +89,7 @@ void TurboVis::AxialTurbine::DrawAirfoilPlot(const int labelVerbosity, const boo
 
         // velocity triangle in front of rotor
         // as starting point, use -w1 so that w1 ends up directly in the airfoil. also normalise triangle.
-        Vec middleTriangleOrigin = statorTrailingEdge + (V2 * scale * offsetFromLE);
+        Vec middleTriangleOrigin = statorTrailingEdge + (V1 * scale * offsetFromLE);
 
 
         (W1 * scale).PlotLine(middleTriangleOrigin, "W1", WColour, labelVerbosity, true, bDisplayAngles, false);
@@ -100,7 +100,7 @@ void TurboVis::AxialTurbine::DrawAirfoilPlot(const int labelVerbosity, const boo
         }
 
         // display behind rotor
-        Vec endTriangleOrigin = rotorTrailingEdge + (V2 * scale * offsetFromLE);
+        Vec endTriangleOrigin = rotorTrailingEdge + (W2 * scale * offsetFromLE);
         (W2 * scale).PlotLine(endTriangleOrigin, "W2", WOutColour, labelVerbosity, true, bDisplayAngles, false);
         if (triangleDisplayLevel > 2)
         {

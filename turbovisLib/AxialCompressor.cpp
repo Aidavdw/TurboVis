@@ -90,7 +90,7 @@ void TurboVis::AxialCompressor::DrawAirfoilPlot(const int labelVerbosity, const 
         }
 
         // display behind rotor
-        Vec middleTriangleOrigin = rotorTrailingEdge + (V2 * scale* offsetFromLE);
+        Vec middleTriangleOrigin = rotorTrailingEdge + (W2 * scale* offsetFromLE);
         (W2 * scale).PlotLine(middleTriangleOrigin, "W2", WOutColour, labelVerbosity, true, bDisplayAngles, false);
         if (triangleDisplayLevel > 2)
         {
