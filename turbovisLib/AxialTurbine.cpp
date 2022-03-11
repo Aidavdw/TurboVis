@@ -33,7 +33,7 @@ void TurboVis::AxialTurbine::ShowFlowAngleSettings(bool bRepeatedStage)
     else
     {
         // a1 = a3. Since inflow V is known, this means that stator outflow V must be the same!
-        stageOutflowAngle = V1.Angle();
+        stageInflowAngle = V2.Angle();
     }
 }
 
