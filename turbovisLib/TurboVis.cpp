@@ -1,13 +1,14 @@
 #include "TurboVis.h"
 #include "imgui.h"
 #include <memory>
-#include <iostream>
 
 #include "AxialCompressor.h"
-#include "Stage.h" 
+#include "Stage.h"
 #include "AxialTurbine.h"
+#include "StageContext.h"
 
-void TurboVis::DisplayMainMenu(Stage* stage)
+
+void TurboVis::DisplayMainMenu(StageContext& stageContext)
 {
     //TODO: toggle buttons for disp other windows
     ImGui::Begin("TurboVis ver 0.1");
@@ -15,23 +16,11 @@ void TurboVis::DisplayMainMenu(Stage* stage)
     static int currentTurbomachineType = 0;
     if (ImGui::Combo("Turbomachine type", &currentTurbomachineType, availableTurbomachineTypes, IM_ARRAYSIZE(availableTurbomachineTypes)))
     {
-
-        switch (currentTurbomachineType)
-        {
-        case 0:
-            std::cout << "Switching to Compressor";
-            delete stage;
-            stage = new AxialCompressor();
-            break;
-        case 1:
-            std::cout << "Changing to Turbine";
-            delete stage;
-            stage = new AxialTurbine();
-        }
+        stageContext.SetType(currentTurbomachineType);
     }
 
-    ImGui::Checkbox("Show velocity triangle window", &stage->bShowVelocityTriangleWindow);
-    ImGui::Checkbox("Show airfoil window", &stage->bShowAirfoilPlotWindow);
+    ImGui::Checkbox("Show velocity triangle window", &stageContext.stage->bShowVelocityTriangleWindow);
+    ImGui::Checkbox("Show airfoil window", &stageContext.stage->bShowAirfoilPlotWindow);
 
     ImGui::Separator();
     ImGui::Text("Options");
@@ -48,12 +37,12 @@ void TurboVis::DisplayMainMenu(Stage* stage)
     ImGui::ColorEdit3("Colour of U", ucol);
     ImGui::ColorEdit3("Colour of V", vcol);
     ImGui::ColorEdit3("Colour of W", wcol);
-    stage->UColour = ImVec4(ucol[0], ucol[1], ucol[2], 1.f);
-    stage->VColour = ImVec4(vcol[0], vcol[1], vcol[2], 1.f);
-    stage->WColour = ImVec4(wcol[0], wcol[1], wcol[2], 1.f);
-    stage->UOutColour = Desaturate(stage->UColour);
-    stage->VOutColour = Desaturate(stage->VColour);
-    stage->WOutColour = Desaturate(stage->WColour);
+    stageContext.stage->UColour = ImVec4(ucol[0], ucol[1], ucol[2], 1.f);
+    stageContext.stage->VColour = ImVec4(vcol[0], vcol[1], vcol[2], 1.f);
+    stageContext.stage->WColour = ImVec4(wcol[0], wcol[1], wcol[2], 1.f);
+    stageContext.stage->UOutColour = Desaturate(stageContext.stage->UColour);
+    stageContext.stage->VOutColour = Desaturate(stageContext.stage->VColour);
+    stageContext.stage->WOutColour = Desaturate(stageContext.stage->WColour);
 
 
 

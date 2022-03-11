@@ -159,6 +159,7 @@
     <ClCompile Include="..\turbovisLib\AxialCompressor.cpp" />
     <ClCompile Include="..\turbovisLib\AxialTurbine.cpp" />
     <ClCompile Include="..\turbovisLib\Stage.cpp" />
+    <ClCompile Include="..\turbovisLib\StageContext.cpp" />
     <ClCompile Include="..\turbovisLib\TurboVis.cpp" />
     <ClCompile Include="..\turbovisLib\Vec.cpp" />
     <ClCompile Include="main.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="..\turbovisLib\AxialCompressor.h" />
     <ClInclude Include="..\turbovisLib\AxialTurbine.h" />
     <ClInclude Include="..\turbovisLib\Stage.h" />
+    <ClInclude Include="..\turbovisLib\StageContext.h" />
     <ClInclude Include="..\turbovisLib\TurboVis.h" />
     <ClInclude Include="..\turbovisLib\Vec.h" />
   </ItemGroup>

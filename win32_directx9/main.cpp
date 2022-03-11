@@ -12,7 +12,7 @@
 #include "implot.h"
 
 #include "TurboVis.h"
-#include "AxialCompressor.h"
+#include "StageContext.h"
 
 
 // Data
@@ -105,7 +105,7 @@ int main(int, char**)
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     // TURBOVIS CODE
-    TurboVis::Stage* stage = new TurboVis::AxialCompressor();
+    TurboVis::StageContext stageContext = TurboVis::StageContext(0); // start with axial comp
 
     // Main loop
     bool done = false;
@@ -133,14 +133,14 @@ int main(int, char**)
         ImGui::NewFrame();
 
         // 0. TURBOVIS CODE
-        TurboVis::DisplayMainMenu(stage);
-        if (stage)
+        TurboVis::DisplayMainMenu(stageContext);
+        if (stageContext.stage)
         {
-            stage->UpdateStageCoefficients();
-            stage->CalculateVelocityTriangles();
-            stage->DisplayVelocityTriangleValues();
-            stage->PlotVelocityTriangles();
-            stage->DisplayAirfoils();
+            stageContext.stage->UpdateStageCoefficients();
+            stageContext.stage->CalculateVelocityTriangles();
+            stageContext.stage->DisplayVelocityTriangleValues();
+            stageContext.stage->PlotVelocityTriangles();
+            stageContext.stage->DisplayAirfoils();
         }
 
         // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
@@ -214,9 +214,6 @@ int main(int, char**)
 
     // Turbovis cleanup
     ImPlot::DestroyContext();
-    delete stage;
-
-
     ImGui::DestroyContext();
    
 
