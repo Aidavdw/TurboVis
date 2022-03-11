@@ -82,7 +82,7 @@ void TurboVis::AxialTurbine::DrawAirfoilPlot(const int labelVerbosity, const boo
         // in frong of stator, based on inflow angle.
         if (triangleDisplayLevel > 1)
         {
-            Vec frontTriangleOrigin = statorLeadingEdge + (W1 * (scale * (1 + offsetFromLE)) * -1);
+            Vec frontTriangleOrigin = statorLeadingEdge + Vec(stageInflowAngle) * -1 * (1 + offsetFromLE);
             inflowVec.PlotLine(frontTriangleOrigin, "Inflow", UOutColour, labelVerbosity, false, bDisplayAngles, false);
         }
 
