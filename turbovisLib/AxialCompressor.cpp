@@ -64,7 +64,7 @@ void TurboVis::AxialCompressor::DrawAirfoilPlot(const int labelVerbosity, const 
     Vec rotorTrailingEdge = AddAirfoilToPlot("Rotor", rotorLeadingEdge, W1, W2, rotorTrailingEdgePoint, rotorCurvatureControl, labelVerbosity, bAllowAirfoilEdit, rotorPitch, animationFrac, 0);
 
     // All the velocity triangles here are scaled relative to the length of W1!
-    float scale = W1.GetNormalised().tangentialComponent / W1.tangentialComponent;
+    float scale = 1 / W1.Magnitude();
 
     // stator
     static ImPlotPoint statorTrailingEdgePoint = ImPlotPoint(0.7f, 3.4f);
