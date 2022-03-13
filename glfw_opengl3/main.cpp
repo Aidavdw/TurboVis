@@ -86,6 +86,7 @@ int main(int, char**)
 
     // Load Fonts
     ImFont* segoe = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\segoeui.ttf", 30.0f); // WINDOWS FONT
+
     if (segoe)
         segoe->Scale = 0.6f;
     else
@@ -136,7 +137,7 @@ int main(int, char**)
             glfwMakeContextCurrent(backup_current_context);
         }
 
-        glfwSwapBuffers(window);
+        //glfwSwapBuffers(window);
     }
 
     // Cleanup
