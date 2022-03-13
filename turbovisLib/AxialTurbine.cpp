@@ -63,16 +63,21 @@ void TurboVis::AxialTurbine::DrawAirfoilPlot(const int labelVerbosity, const boo
     static ImPlotPoint statorCurvatureControl = ImPlotPoint(-0.25f, 0.5f);
     Vec statorLeadingEdge;
     Vec inflowVec = Vec(stageInflowAngle);
-    Vec statorTrailingEdge = AddAirfoilToPlot("Stator", statorLeadingEdge, inflowVec, V1, statorTrailingEdgePoint, statorCurvatureControl, labelVerbosity, bAllowAirfoilEdit, statorPitch, animationFrac, 0);
+    Vec statorTrailingEdge = AddAirfoilToPlot("Stator", statorLeadingEdge, inflowVec, V1, statorTrailingEdgePoint, statorCurvatureControl, labelVerbosity, bAllowAirfoilEdit, statorPitch, 0, 0);
 
     // All the velocity triangles here are scaled relative to the length of W1!
     float scale = 1 / W1.Magnitude();
 
+    // velocity triangle in front of rotor
+    // as starting point, use -w1 so that w1 ends up directly in the airfoil. also normalise triangle.
+    // Note that this point is required to extrapolate the LE of the rotor from, so it gets calculated regardless of whether the velocity triangles are drawn or not.
+    Vec middleTriangleOrigin = statorTrailingEdge + (V1 * scale * offsetFromLE);
+
     // rotor
-    static ImPlotPoint rotorTrailingEdgePoint = ImPlotPoint(0.7f, 3.4f);
-    static ImPlotPoint rotorCurvatureControl = ImPlotPoint(0.5f, 3.f);
-    Vec rotorLeadingEdge = V1 * scale * (1 + 2 * offsetFromLE) + statorTrailingEdge;
-    Vec rotorTrailingEdge = AddAirfoilToPlot("Stator", rotorLeadingEdge, W1, W2, rotorTrailingEdgePoint, rotorCurvatureControl, labelVerbosity, bAllowAirfoilEdit, rotorPitch, 0, 2);
+    static ImPlotPoint rotorTrailingEdgePoint = ImPlotPoint(0.0f, 3.3f);
+    static ImPlotPoint rotorCurvatureControl = ImPlotPoint(0.0f, 2.6f);
+    Vec rotorLeadingEdge = W1 * scale * (1 + offsetFromLE) + middleTriangleOrigin;
+    Vec rotorTrailingEdge = AddAirfoilToPlot("Stator", rotorLeadingEdge, W1, W2, rotorTrailingEdgePoint, rotorCurvatureControl, labelVerbosity, bAllowAirfoilEdit, rotorPitch, animationFrac, 2);
 
 
 
@@ -87,9 +92,7 @@ void TurboVis::AxialTurbine::DrawAirfoilPlot(const int labelVerbosity, const boo
         }
 
 
-        // velocity triangle in front of rotor
-        // as starting point, use -w1 so that w1 ends up directly in the airfoil. also normalise triangle.
-        Vec middleTriangleOrigin = statorTrailingEdge + (V1 * scale * offsetFromLE);
+
 
 
         (W1 * scale).PlotLine(middleTriangleOrigin, "W1", WColour, labelVerbosity, true, bDisplayAngles, false);
