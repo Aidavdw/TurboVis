@@ -22,6 +22,7 @@
     <ProjectGuid>{4a1fb5ea-22f5-42a8-ab92-1d2df5d47fb9}</ProjectGuid>
     <RootNamespace>example_glfw_opengl3</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>glfw_opengl3</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -90,7 +91,7 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)glfw\include;$(SolutionDir)imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)glfw\include;$(SolutionDir)imgui;$(SolutionDir)turbovisLib;$(SolutionDir)implot;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -120,7 +121,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(SolutionDir)glfw\include;$(SolutionDir)imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)glfw\include;$(SolutionDir)imgui;$(SolutionDir)turbovisLib;$(SolutionDir)implot;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <Link>
@@ -162,6 +163,15 @@
     <ClCompile Include="..\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="..\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="..\implot\implot.cpp" />
+    <ClCompile Include="..\implot\implot_demo.cpp" />
+    <ClCompile Include="..\implot\implot_items.cpp" />
+    <ClCompile Include="..\turbovisLib\AxialCompressor.cpp" />
+    <ClCompile Include="..\turbovisLib\AxialTurbine.cpp" />
+    <ClCompile Include="..\turbovisLib\Stage.cpp" />
+    <ClCompile Include="..\turbovisLib\StageContext.cpp" />
+    <ClCompile Include="..\turbovisLib\TurboVis.cpp" />
+    <ClCompile Include="..\turbovisLib\Vec.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +181,14 @@
     <ClInclude Include="..\imgui\imgui_impl_opengl3.h" />
     <ClInclude Include="..\imgui\imgui_impl_opengl3_loader.h" />
     <ClInclude Include="..\imgui\imgui_internal.h" />
+    <ClInclude Include="..\implot\implot.h" />
+    <ClInclude Include="..\implot\implot_internal.h" />
+    <ClInclude Include="..\turbovisLib\AxialCompressor.h" />
+    <ClInclude Include="..\turbovisLib\AxialTurbine.h" />
+    <ClInclude Include="..\turbovisLib\Stage.h" />
+    <ClInclude Include="..\turbovisLib\StageContext.h" />
+    <ClInclude Include="..\turbovisLib\TurboVis.h" />
+    <ClInclude Include="..\turbovisLib\Vec.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="build_win32.bat" />
