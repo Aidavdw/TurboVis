@@ -111,10 +111,6 @@ void TurboVis::Stage::DisplayAirfoils()
     static float rotorPitch = 1.f;
     static float statorPitch = 1.f;
     static bool bAnimate = true;
-    //static float inflowAngle = 0;
-    //static float outflowAngle = 0;
-
-    //TODO: AUTO AIRFOIL SHAPE MODE
 
     ImGui::Begin("Airfoil");
 

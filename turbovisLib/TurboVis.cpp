@@ -10,7 +10,6 @@
 
 void TurboVis::DisplayMainMenu(StageContext& stageContext)
 {
-    //TODO: toggle buttons for disp other windows
     ImGui::Begin("TurboVis ver 0.1");
     const char* availableTurbomachineTypes[] = { "Axial Compressor", "Axial Turbine"};
     static int currentTurbomachineType = 0;

@@ -61,11 +61,11 @@
     <ClCompile Include="..\imgui\imgui_widgets.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>turbovis</Filter>
-    </ClCompile>
     <ClCompile Include="..\turbovisLib\StageContext.cpp">
       <Filter>turbovis</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
