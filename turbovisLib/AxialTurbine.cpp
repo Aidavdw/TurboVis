@@ -77,7 +77,7 @@ void TurboVis::AxialTurbine::DrawAirfoilPlot(const int labelVerbosity, const boo
     static ImPlotPoint rotorTrailingEdgePoint = ImPlotPoint(0.0f, 3.3f);
     static ImPlotPoint rotorCurvatureControl = ImPlotPoint(0.0f, 2.6f);
     Vec rotorLeadingEdge = W1 * scale * (1 + offsetFromLE) + middleTriangleOrigin;
-    Vec rotorTrailingEdge = AddAirfoilToPlot("Stator", rotorLeadingEdge, W1, W2, rotorTrailingEdgePoint, rotorCurvatureControl, labelVerbosity, bAllowAirfoilEdit, rotorPitch, animationFrac, 2);
+    Vec rotorTrailingEdge = AddAirfoilToPlot("Rotor", rotorLeadingEdge, W1, W2, rotorTrailingEdgePoint, rotorCurvatureControl, labelVerbosity, bAllowAirfoilEdit, rotorPitch, animationFrac, 2);
 
 
 
