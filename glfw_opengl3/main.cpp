@@ -51,11 +51,11 @@ int main(int, char**)
 #endif
 
     // Create window with graphics context
-    GLFWwindow* window = glfwCreateWindow(1280, 720, "TurboVis v1.0", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(1920, 1080, "TurboVis v1.0", NULL, NULL);
     if (window == NULL)
         return 1;
     glfwMakeContextCurrent(window);
-    //glfwSwapInterval(1); // Enable vsync
+    glfwSwapInterval(1); // Enable vsync
 
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
@@ -64,9 +64,9 @@ int main(int, char**)
     ImGuiIO& io = ImGui::GetIO(); (void)io;
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
-    io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
+
     io.IniFilename = "turbovis.ini";
-    io.ConfigViewportsNoAutoMerge = true;
+    //io.ConfigViewportsNoAutoMerge = true;
     io.IniSavingRate = 1E12;
 
     // Setup Dear ImGui style
@@ -137,7 +137,7 @@ int main(int, char**)
             glfwMakeContextCurrent(backup_current_context);
         }
 
-        //glfwSwapBuffers(window);
+        glfwSwapBuffers(window);
     }
 
     // Cleanup
