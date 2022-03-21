@@ -4,6 +4,7 @@ project(TurboVis VERSION 1.1)
 
 set(CMAKE_CXX_STANDARD 14)
 
+# Double check if this works also on linux
 find_package(OpenGL REQUIRED)
 
 file(GLOB_RECURSE SRC_IMGUI imgui/src/*.cpp)
