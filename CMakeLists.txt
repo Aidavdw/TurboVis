@@ -4,6 +4,8 @@ project(TurboVis VERSION 1.1)
 
 set(CMAKE_CXX_STANDARD 14)
 
+find_package(OpenGL REQUIRED)
+
 file(GLOB_RECURSE SRC_IMGUI imgui/src/*.cpp)
 file(GLOB_RECURSE SRC_IMPLOT implot/src/*.cpp)
 file(GLOB_RECURSE SRC_TURBOVISLIB turbovisLib/src/*.cpp)
@@ -23,4 +25,6 @@ target_include_directories(TurboVis_opengl_glfw PUBLIC
 )
 
 target_link_libraries(TurboVis_opengl_glfw LINK_PUBLIC
-	${CMAKE_SOURCE_DIR}/GLFW/lib-vc2010-32/glfw3.lib)
+	${CMAKE_SOURCE_DIR}/GLFW/lib-vc2010-32/glfw3.lib
+	${OPENGL_gl_LIBRARY}
+)
