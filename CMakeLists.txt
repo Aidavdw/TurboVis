@@ -11,6 +11,9 @@ file(GLOB_RECURSE SRC_IMGUI imgui/src/*.cpp)
 file(GLOB_RECURSE SRC_IMPLOT implot/src/*.cpp)
 file(GLOB_RECURSE SRC_TURBOVISLIB turbovisLib/src/*.cpp)
 
+# Building GLFW
+add_subdirectory(${CMAKE_SOURCE_DIR}/glfw-3.3.6)
+
 add_executable(TurboVis_opengl_glfw
 	glfw_opengl3/main.cpp
 	${SRC_IMGUI}
@@ -19,13 +22,14 @@ add_executable(TurboVis_opengl_glfw
 )
 
 target_include_directories(TurboVis_opengl_glfw PUBLIC
-	${CMAKE_SOURCE_DIR}/GLFW/include
 	${CMAKE_SOURCE_DIR}/imgui/include
 	${CMAKE_SOURCE_DIR}/implot/include
 	${CMAKE_SOURCE_DIR}/turbovisLib/include
+	${CMAKE_SOURCE_DIR}/glfw-3.3.6/include
 )
 
 target_link_libraries(TurboVis_opengl_glfw LINK_PUBLIC
-	${CMAKE_SOURCE_DIR}/GLFW/lib-vc2010-32/glfw3.lib
 	${OPENGL_gl_LIBRARY}
+	glfw
+	${GLFW_LIBRARIES}
 )
