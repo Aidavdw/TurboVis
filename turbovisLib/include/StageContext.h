@@ -1,5 +1,7 @@
 #pragma once
+#include <memory>
 #include <Stage.h>
+
 
 namespace TurboVis
 {
