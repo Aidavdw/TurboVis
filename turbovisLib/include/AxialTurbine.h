@@ -16,7 +16,7 @@ namespace TurboVis
 
         ~AxialTurbine()
         {
-            std::cout << "Destroying axial turbine" << std::endl;
+            
         };
 
         /* Virtual functions, strategy pattern*/

@@ -16,7 +16,7 @@ namespace TurboVis
 
         ~AxialCompressor()
         {
-            std::cout << "Destroying axial compressor" << std::endl;
+            
         };
 
 

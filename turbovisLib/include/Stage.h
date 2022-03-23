@@ -23,7 +23,7 @@ namespace TurboVis
 
         virtual ~Stage()
         {
-            std::cout << "Destroying base stage" << std::endl;
+            
         };
 
     public:

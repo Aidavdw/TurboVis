@@ -1,7 +1,6 @@
 #include "Stage.h"
 #include "implot.h"
 #include "TurboVis.h"
-#include <iostream>
 
 void TurboVis::Stage::UpdateStageCoefficients()
 {
@@ -130,7 +129,7 @@ void TurboVis::Stage::DisplayAirfoils()
 
         ImGui::Text("Velocity triangle display detail level");
         ImGui::SameLine();
-        if (ImGui::ArrowButton("##left2", ImGuiDir_Left)) { triangleDisplayLevel = (triangleDisplayLevel > 0) ? triangleDisplayLevel - 1 : triangleDisplayLevel; std::cout << "lvl" << triangleDisplayLevel; }
+        if (ImGui::ArrowButton("##left2", ImGuiDir_Left)) { triangleDisplayLevel = (triangleDisplayLevel > 0) ? triangleDisplayLevel - 1 : triangleDisplayLevel; }
         ImGui::SameLine();
         if (ImGui::ArrowButton("##right2", ImGuiDir_Right)) { triangleDisplayLevel = (triangleDisplayLevel < 3) ? triangleDisplayLevel + 1 : triangleDisplayLevel; }
 
