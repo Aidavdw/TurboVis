@@ -84,13 +84,17 @@ int main(int, char**)
     ImGui_ImplOpenGL3_Init(glsl_version);
 
     // Load Fonts
-    ImFont* segoe = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\segoeui.ttf", 30.0f); // WINDOWS FONT
+    try
+    {
+        ImFont* segoe = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\segoeui.ttf", 30.0f); // WINDOWS FONT
 
-    if (segoe)
-        segoe->Scale = 0.6f;
-    else
+        if (segoe)
+            segoe->Scale = 0.6f;
+    }
+    catch(...)
+    {
         printf("Could not load Segoe UI font, falling back to built - in");
-
+    }
     // start with axial comp
     TurboVis::StageContext stageContext = TurboVis::StageContext(0); 
 
