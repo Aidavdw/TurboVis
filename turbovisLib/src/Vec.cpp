@@ -34,13 +34,13 @@ void TurboVis::Vec::PlotLine(const Vec& origin, const std::string& label, const 
         switch (labelVerbosity)
         {
         case 2:
-            sprintf_s(labelBuffer, "%s = %.4f", label.c_str(), Magnitude());
+            snprintf(labelBuffer, sizeof(labelBuffer), "%s = %.4f", label.c_str(), Magnitude());
             break;
         case 3:
-            sprintf_s(labelBuffer, "%s = %.4f\n(%.3ft, %.3fa)", label.c_str(), Magnitude(), tangentialComponent, axialComponent);
+            snprintf(labelBuffer, sizeof(labelBuffer), "%s = %.4f\n(%.3ft, %.3fa)", label.c_str(), Magnitude(), tangentialComponent, axialComponent);
             break;
         default:
-            sprintf_s(labelBuffer, "%s", label.c_str());
+            snprintf(labelBuffer, sizeof(labelBuffer), "%s", label.c_str());
             break;
         }
         
@@ -56,7 +56,7 @@ void TurboVis::Vec::PlotLine(const Vec& origin, const std::string& label, const 
         // Construct an arc between the axial axis and the point where the angle will be drawn.
 #define ARCSEGMENTS 10
         int idx = label[1] - '0';
-        float distanceRatio = 0.1f + idx * 0.2;
+        float distanceRatio = 0.1f + idx * 0.2f;
         float radius = distanceRatio * Magnitude();
 
         Vec circleEndPoint = origin + *this * distanceRatio;
@@ -80,27 +80,27 @@ void TurboVis::Vec::PlotLine(const Vec& origin, const std::string& label, const 
             {
             case 'V':
                 if (labelVerbosity == 1)
-                    sprintf_s(angleBuffer, "alpha_%i", idx);
+                    snprintf(angleBuffer, sizeof(angleBuffer), "alpha_%i", idx);
                 else
-                    sprintf_s(angleBuffer, "alpha_%i\n%.2f deg", idx, Angle());
+                    snprintf(angleBuffer, sizeof(angleBuffer), "alpha_%i\n%.2f deg", idx, Angle());
                 break;
             case 'W':
                 if (labelVerbosity == 1)
-                    sprintf_s(angleBuffer, "beta_%i", idx);
+                    snprintf(angleBuffer, sizeof(angleBuffer), "beta_%i", idx);
                 else
-                    sprintf_s(angleBuffer, "beta_%i\n%.2f deg", idx, Angle());
+                    snprintf(angleBuffer, sizeof(angleBuffer), "beta_%i\n%.2f deg", idx, Angle());
                 break;
             case 'O':
                 if (labelVerbosity == 1)
-                    sprintf_s(angleBuffer, "alpha_3");
+                    snprintf(angleBuffer, sizeof(angleBuffer), "alpha_3");
                 else
-                    sprintf_s(angleBuffer, "alpha_3\n%.2f deg", Angle());
+                    snprintf(angleBuffer, sizeof(angleBuffer), "alpha_3\n%.2f deg", Angle());
                 break;
             case 'I':
                 if (labelVerbosity == 1)
-                    sprintf_s(angleBuffer, "alpha_0");
+                    snprintf(angleBuffer, sizeof(angleBuffer), "alpha_0");
                 else
-                    sprintf_s(angleBuffer, "alpha_0\n%.2f deg", Angle());
+                    snprintf(angleBuffer, sizeof(angleBuffer), "alpha_0\n%.2f deg", Angle());
                 break;
             }
             Vec centre = circleEndPoint * 0.5 + circleStartPoint * 0.5;
