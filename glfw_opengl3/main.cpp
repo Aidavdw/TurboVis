@@ -99,8 +99,10 @@ int main(int, char**)
         printf("Could not load Segoe UI font, falling back to built - in");
     }
 #endif
-    // start with axial comp
+
+    // start with axial comp, and run calculations at it at least once to set it up
     TurboVis::StageContext stageContext = TurboVis::StageContext(0); 
+    stageContext.stage->ProcessDutyCoefficients();
 
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
@@ -119,7 +121,6 @@ int main(int, char**)
         if (stageContext.stage)
         {
             stageContext.stage->UpdateStageCoefficients();
-            stageContext.stage->CalculateVelocityTriangles();
             stageContext.stage->DisplayVelocityTriangleValues();
             stageContext.stage->PlotVelocityTriangles();
             stageContext.stage->DisplayAirfoils();

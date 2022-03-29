@@ -24,7 +24,7 @@ namespace TurboVis
 
         /* Virtual functions, strategy pattern*/
     public:
-        virtual void CalculateVelocityTriangles();
+        virtual void ProcessDutyCoefficients();
     protected:
         // Shows the a0 & a3 flow angles. Different for types of stages, so defined in subclass.
         virtual void ShowFlowAngleSettings(bool bRepeatedStage);

@@ -4,7 +4,7 @@
 #include "AxialTurbine.h"
 #include "imgui.h"
 
-void TurboVis::AxialTurbine::CalculateVelocityTriangles()
+void TurboVis::AxialTurbine::ProcessDutyCoefficients()
 {
     float tana1 = (workCoefficient - 2 * degreeOfReaction + 2) / (2 * flowCoefficient);
     float tanb2 = -(workCoefficient + 2 * degreeOfReaction) / (2 * flowCoefficient);
