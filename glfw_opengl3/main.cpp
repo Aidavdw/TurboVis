@@ -1,3 +1,5 @@
+// TurboVis, a turbomachine visualisation tool by Aida van de Wetering
+// Licensed under GNU General Public License v2.0
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"

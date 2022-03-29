@@ -1,3 +1,6 @@
+// TurboVis, a turbomachine visualisation tool by Aida van de Wetering
+// Licensed under GNU General Public License v2.0
+
 #include "Stage.h"
 #include "implot.h"
 #include "TurboVis.h"
