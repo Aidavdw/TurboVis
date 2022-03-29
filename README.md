@@ -2,6 +2,8 @@
 A turbomachine visualisation tool, made for the TU Delft AE4206 Turbomachinery course.
 Enables real-time exploration and experimentation of load-coefficient based turbomachine design.
 
+![Screenshot of TurboVis](screenshot.png)
+
 ## Installation
 ### Windows
 Download the Windows binary and extract it to a directory on your computer together with the *turbovis.ini* file.
