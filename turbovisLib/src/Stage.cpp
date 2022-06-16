@@ -251,3 +251,12 @@ TurboVis::Vec TurboVis::Stage::AddAirfoilToPlot(const std::string& label, const 
 
 }
 
+void TurboVis::Stage::UpdateWorkAndEnthalpy()
+{
+    // Definition of work coefficient psi
+    deltavTangential = workCoefficient * rotationalSpeed;
+    deltaEnthalpy = deltavTangential * rotationalSpeed; // is the specific work!
+
+    // Definition R
+    deltaEnthalpyRotor = deltaEnthalpy * degreeOfReaction;
+}

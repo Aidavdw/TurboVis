@@ -73,6 +73,10 @@ namespace TurboVis
         // the outflow angle of the stator
         float stageOutflowAngle = 0;
 
+        float deltavTangential = 0;
+        float deltaEnthalpy = 0;
+        float deltaEnthalpyRotor = 0;
+
         /* For displaying the airfoil plots */
 
 
@@ -91,6 +95,8 @@ namespace TurboVis
     protected:
         // Plots the rotor in PlotAirfoil();
         Vec AddAirfoilToPlot(const std::string& label, const Vec leadingEdge, const Vec Inflow, const Vec Outflow, ImPlotPoint& trailingEdgePoint, ImPlotPoint& curvatureControl, const int labelVerbosity, const bool bAllowAirfoilEdit, const float bladePitch, const float animationFrac = 0, int baseID = 0);
+
+        void UpdateWorkAndEnthalpy();
 
     /* Virtual functions, strategy pattern*/
     public:
