@@ -10,8 +10,12 @@ namespace TurboVis
     {
     public:
         AxialCompressor() :
-            Stage(2, 1, 0.5, 1)
-        {};
+            Stage(0.8, 0.6, 0.5, 1)
+        {
+            flowCoefficientRange = "Flow Coefficient [0.4 - 1.1]";
+            workCoefficientRange = "Work Coefficient [0.3 - 0.6]";
+            degreeOfReactionRange = "Degree of Reaction (0 is impulse stage)";
+        };
 
         AxialCompressor(const float flowCoefficient, const float workCoefficent, const float degreeOfReaction, const float rotationalSpeed) :
             Stage(flowCoefficient, workCoefficent, degreeOfReaction, rotationalSpeed)
