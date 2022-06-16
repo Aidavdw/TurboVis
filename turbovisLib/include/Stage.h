@@ -92,11 +92,13 @@ namespace TurboVis
         // Displays the windows showing the airfoils. Depends on child implementation of ShowFlowAngleSettings(), DrawAirfoilPlot().
         void DisplayAirfoils();
 
+        void DisplayWorkAndEnthalpy();
+
     protected:
         // Plots the rotor in PlotAirfoil();
         Vec AddAirfoilToPlot(const std::string& label, const Vec leadingEdge, const Vec Inflow, const Vec Outflow, ImPlotPoint& trailingEdgePoint, ImPlotPoint& curvatureControl, const int labelVerbosity, const bool bAllowAirfoilEdit, const float bladePitch, const float animationFrac = 0, int baseID = 0);
 
-        void UpdateWorkAndEnthalpy();
+        
 
     /* Virtual functions, strategy pattern*/
     public:

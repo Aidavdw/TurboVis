@@ -251,12 +251,20 @@ TurboVis::Vec TurboVis::Stage::AddAirfoilToPlot(const std::string& label, const 
 
 }
 
-void TurboVis::Stage::UpdateWorkAndEnthalpy()
+void TurboVis::Stage::DisplayWorkAndEnthalpy()
 {
     // Definition of work coefficient psi
     deltavTangential = workCoefficient * rotationalSpeed;
     deltaEnthalpy = deltavTangential * rotationalSpeed; // is the specific work!
 
-    // Definition R
+    // Definition of R
     deltaEnthalpyRotor = deltaEnthalpy * degreeOfReaction;
+    float deltaEnthalpyStator = deltaEnthalpy - deltaEnthalpyRotor;
+
+    ImGui::Begin("Thermodynamic Properties");
+    ImGui::LabelText("delta v_t", "%.3f", deltavTangential);
+    ImGui::LabelText("Specific work, change in enthalpy", "%.3f", deltaEnthalpy);
+    ImGui::LabelText("Rotor Specific Work", "%.3f", deltaEnthalpyRotor);
+    ImGui::LabelText("Stator specific Work", "%.3f", deltaEnthalpyStator);
+    ImGui::End();
 }

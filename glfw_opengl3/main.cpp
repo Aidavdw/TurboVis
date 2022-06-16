@@ -121,6 +121,7 @@ int main(int, char**)
         if (stageContext.stage)
         {
             stageContext.stage->UpdateStageCoefficients();
+            stageContext.stage->DisplayWorkAndEnthalpy();
             stageContext.stage->DisplayVelocityTriangleValues();
             stageContext.stage->PlotVelocityTriangles();
             stageContext.stage->DisplayAirfoils();
