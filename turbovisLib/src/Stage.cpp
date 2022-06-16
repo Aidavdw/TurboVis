@@ -9,12 +9,12 @@ void TurboVis::Stage::UpdateStageCoefficients()
 {
     ImGui::Begin("Stage Coefficients");
 
-    if (ImGui::DragFloat("Flow Coefficient", &flowCoefficient, 0.01f, 0.01f, 4.0f, "phi = %.3f", ImGuiSliderFlags_AlwaysClamp)){ ProcessDutyCoefficients(); }
-    if (ImGui::DragFloat("Work Coefficient", &workCoefficient, 0.01f, 0.01f, 4.0f, "psi = %.3f", ImGuiSliderFlags_AlwaysClamp)) { ProcessDutyCoefficients(); }
-    if (ImGui::DragFloat("Degree of Reaction", &degreeOfReaction, 0.01f, 0.0f, 1.0f, "r = %.3f", ImGuiSliderFlags_AlwaysClamp)) { ProcessDutyCoefficients(); }
+    if (ImGui::DragFloat(flowCoefficientRange.c_str(), &flowCoefficient, 0.01f, 0.01f, 4.0f, "phi = %.3f", ImGuiSliderFlags_AlwaysClamp)) { ProcessDutyCoefficients(); }
+    if (ImGui::DragFloat(workCoefficientRange.c_str(), &workCoefficient, 0.01f, 0.01f, 4.0f, "psi = %.3f", ImGuiSliderFlags_AlwaysClamp)) { ProcessDutyCoefficients(); }
+    if (ImGui::DragFloat(degreeOfReactionRange.c_str(), &degreeOfReaction, 0.01f, 0.0f, 1.0f, "r = %.3f", ImGuiSliderFlags_AlwaysClamp)) { ProcessDutyCoefficients(); }
 
     ImGui::Separator();
-    if (ImGui::DragFloat("Rotation Speed", &rotationalSpeed, 0.1f, 1.f, 4000.0f, "U = %.3f", ImGuiSliderFlags_AlwaysClamp)) { ProcessDutyCoefficients(); }
+    if (ImGui::DragFloat(rotationalSpeedRange.c_str(), &rotationalSpeed, 0.1f, 1.f, 4000.0f, "U = %.3f", ImGuiSliderFlags_AlwaysClamp)) { ProcessDutyCoefficients(); }
     ImGui::End();
 }
 

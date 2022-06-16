@@ -77,7 +77,11 @@ namespace TurboVis
         float deltaEnthalpy = 0;
         float deltaEnthalpyRotor = 0;
 
-        /* For displaying the airfoil plots */
+        // Text for the stage coefficient window
+        std::string rotationalSpeedRange = "Rotational Speed";
+        std::string flowCoefficientRange = "Flow Coefficient";
+        std::string workCoefficientRange = "Work Coefficient";
+        std::string degreeOfReactionRange = "Degree of Reaction";
 
 
     public:
