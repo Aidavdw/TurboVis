@@ -61,7 +61,7 @@ void TurboVis::AxialCompressor::DrawAirfoilPlot(const int labelVerbosity, const 
         animationFrac = 0.;
 
     // rotor
-    static ImPlotPoint rotorTrailingEdgePoint = ImPlotPoint(-0.2f, 1.f);
+    static ImPlotPoint rotorTrailingEdgePoint = ImPlotPoint(-0.5f, 1.f);
     static ImPlotPoint rotorCurvatureControl = ImPlotPoint(-0.25f, 0.5f);
     Vec rotorLeadingEdge;
     Vec rotorTrailingEdge = AddAirfoilToPlot("Rotor", rotorLeadingEdge, W1, W2, rotorTrailingEdgePoint, rotorCurvatureControl, labelVerbosity, bAllowAirfoilEdit, rotorPitch, animationFrac, 0);
@@ -70,7 +70,7 @@ void TurboVis::AxialCompressor::DrawAirfoilPlot(const int labelVerbosity, const 
     float scale = 1 / W1.Magnitude();
 
     // stator
-    static ImPlotPoint statorTrailingEdgePoint = ImPlotPoint(0.7f, 3.4f);
+    static ImPlotPoint statorTrailingEdgePoint = ImPlotPoint(1.f, 3.4f);
     static ImPlotPoint statorCurvatureControl = ImPlotPoint(-0.5f, 3.f);
     Vec outflowVec = Vec(stageOutflowAngle);
     Vec statorLeadingEdge = V2*scale*(1+2*offsetFromLE) + rotorTrailingEdge;
