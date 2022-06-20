@@ -253,18 +253,47 @@ TurboVis::Vec TurboVis::Stage::AddAirfoilToPlot(const std::string& label, const 
 
 void TurboVis::Stage::DisplayWorkAndEnthalpy()
 {
-    // Definition of work coefficient psi
-    deltavTangential = workCoefficient * rotationalSpeed;
-    deltaEnthalpy = deltavTangential * rotationalSpeed; // is the specific work!
 
-    // Definition of R
-    deltaEnthalpyRotor = deltaEnthalpy * degreeOfReaction;
-    float deltaEnthalpyStator = deltaEnthalpy - deltaEnthalpyRotor;
+
+
+
 
     ImGui::Begin("Thermodynamic Properties");
+    if (ImGui::DragFloat("Specific Heat Ratio", &specificHeatRatio, 0.01f, 0.01f, 10.0f, "gamma = %.3f", ImGuiSliderFlags_None))
+    {
+    
+    }
+
+    if (ImGui::DragFloat("Specific Gas Constant", &specificGasConstant, 0.01f, 5.f, 1000.0f, "R = %.1f J/kg/K", ImGuiSliderFlags_None))
+    {
+
+    }
+
+    if (ImGui::DragFloat("Flow Inlet Temperature", &inletTemperature, 0.01f, 5.f, 3000.0f, "T_in = %.1f K", ImGuiSliderFlags_None))
+    {
+
+    }
+
+    // Definition of work coefficient psi
+    deltavTangential = workCoefficient * rotationalSpeed;
     ImGui::LabelText("delta v_t", "%.3f", deltavTangential);
-    ImGui::LabelText("Specific work, change in enthalpy", "%.3f", deltaEnthalpy);
-    ImGui::LabelText("Rotor Specific Work", "%.3f", deltaEnthalpyRotor);
-    ImGui::LabelText("Stator specific Work", "%.3f", deltaEnthalpyStator);
+
+    deltaEnthalpy = deltavTangential * rotationalSpeed; // is the specific work!
+    deltaEnthalpyRotor = deltaEnthalpy * degreeOfReaction; // Definition of R
+    float deltaEnthalpyStator = deltaEnthalpy - deltaEnthalpyRotor;
+    ImGui::LabelText("Specific work, change in enthalpy", "%.3f J", deltaEnthalpy);
+    ImGui::LabelText("Rotor Specific Work", "%.3f J", deltaEnthalpyRotor);
+    ImGui::LabelText("Stator specific Work", "%.3f J", deltaEnthalpyStator);
+
+
+    // Stuff from the dimensionless euler equation
+    tipSpeedMachNumber = sqrt(U.tangentialComponent * U.tangentialComponent / (specificGasConstant * specificHeatRatio * inletTemperature));
+    ImGui::LabelText("Tip Speed Mach Number", "%.3f", tipSpeedMachNumber);
+
+    float pressureRatio_pre = workCoefficient * tipSpeedMachNumber * tipSpeedMachNumber * (specificHeatRatio - 1) + 1;
+    float pressureRatioExponent = specificHeatRatio / (specificHeatRatio - 1);
+    float pressureRatio = pow(pressureRatio_pre, pressureRatioExponent);
+    ImGui::LabelText("Pressure Ratio (total-to-total)", "%.3f", pressureRatio);
+
     ImGui::End();
 }

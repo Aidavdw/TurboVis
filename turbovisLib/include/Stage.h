@@ -77,6 +77,12 @@ namespace TurboVis
         float deltaEnthalpy = 0;
         float deltaEnthalpyRotor = 0;
 
+        // Thermodynamic properties
+        float specificHeatRatio = 1.4;
+        float specificGasConstant = 287;
+        float inletTemperature = 288.15; // Kelvin
+        float tipSpeedMachNumber;
+
         // Text for the stage coefficient window
         std::string rotationalSpeedRange = "Rotational Speed";
         std::string flowCoefficientRange = "Flow Coefficient";
