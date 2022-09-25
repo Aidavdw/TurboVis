@@ -20,4 +20,7 @@ void TurboVis::StageContext::SetType(const int type)
         stage = std::make_unique<AxialTurbine>();
         break;
     }
+
+    // Call the update stage coefficients event, otherwise it'll be empty
+    stage->ProcessDutyCoefficients();
 }

@@ -13,7 +13,7 @@
 
 void TurboVis::DisplayMainMenu(StageContext& stageContext)
 {
-    ImGui::Begin("TurboVis ver 0.1");
+    ImGui::Begin("TurboVis ver 1.2");
     const char* availableTurbomachineTypes[] = { "Axial Compressor", "Axial Turbine"};
     static int currentTurbomachineType = 0;
     if (ImGui::Combo("Turbomachine type", &currentTurbomachineType, availableTurbomachineTypes, IM_ARRAYSIZE(availableTurbomachineTypes)))
@@ -46,7 +46,14 @@ void TurboVis::DisplayMainMenu(StageContext& stageContext)
     stageContext.stage->VOutColour = Desaturate(stageContext.stage->VColour);
     stageContext.stage->WOutColour = Desaturate(stageContext.stage->WColour);
 
+    ImGui::Text("All windows are re-arrangeable and dockable.");
+    ImGui::Text("Make your own lay-out and save it using the button below");
 
+    // Saving the current layout
+    if (ImGui::Button("Save current layout"))
+    {
+        ImGui::SaveIniSettingsToDisk("turbovis.ini");
+    }
 
 
 
@@ -56,4 +63,12 @@ void TurboVis::DisplayMainMenu(StageContext& stageContext)
 ImVec4 TurboVis::Desaturate(const ImVec4 source)
 {
     return ImVec4(source.x / 1.6, source.y / 1.6, source.z/ 1.6, source.w);
+}
+
+void TurboVis::DisplayManual()
+{
+    ImGui::Begin("Manual");
+
+
+    ImGui::End();
 }

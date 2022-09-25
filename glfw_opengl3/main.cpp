@@ -51,7 +51,7 @@ int main(int, char**)
 #endif
 
     // Create window with graphics context
-    GLFWwindow* window = glfwCreateWindow(1920, 1080, "TurboVis v1.0", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(1920, 1080, "TurboVis v1.2", NULL, NULL);
     if (window == NULL)
         return 1;
     glfwMakeContextCurrent(window);

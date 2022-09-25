@@ -10,12 +10,20 @@ namespace TurboVis
     {
     public:
         AxialTurbine() :
-            Stage(2, 1, 0.5, 1)
-        {};
+            Stage(0.5, 2, 0.5, 1)
+        {
+            flowCoefficientRange = "Flow Coefficient [0.4 - 1.2]";
+            workCoefficientRange = "Work Coefficient [1 - 3]";
+            degreeOfReactionRange = "Degree of Reaction (0 is impulse stage)";
+        };
 
         AxialTurbine(const float flowCoefficient, const float workCoefficent, const float degreeOfReaction, const float rotationalSpeed) :
             Stage(flowCoefficient, workCoefficent, degreeOfReaction, rotationalSpeed)
-        {};
+        {
+            flowCoefficientRange = "Flow Coefficient [0.4 - 1.2]";
+            workCoefficientRange = "Work Coefficient [1 - 3]";
+            degreeOfReactionRange = "Degree of Reaction (0 is impulse stage)";
+        };
 
         ~AxialTurbine()
         {
