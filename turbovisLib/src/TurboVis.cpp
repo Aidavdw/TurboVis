@@ -46,6 +46,9 @@ void TurboVis::DisplayMainMenu(StageContext& stageContext)
     stageContext.stage->VOutColour = Desaturate(stageContext.stage->VColour);
     stageContext.stage->WOutColour = Desaturate(stageContext.stage->WColour);
 
+    ImGui::Text("All windows are re-arrangeable and dockable.");
+    ImGui::Text("Make your own lay-out and save it using the button below");
+
     // Saving the current layout
     if (ImGui::Button("Save current layout"))
     {
@@ -60,4 +63,12 @@ void TurboVis::DisplayMainMenu(StageContext& stageContext)
 ImVec4 TurboVis::Desaturate(const ImVec4 source)
 {
     return ImVec4(source.x / 1.6, source.y / 1.6, source.z/ 1.6, source.w);
+}
+
+void TurboVis::DisplayManual()
+{
+    ImGui::Begin("Manual");
+
+
+    ImGui::End();
 }

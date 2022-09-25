@@ -13,5 +13,7 @@ namespace TurboVis
 
     void DisplayMainMenu(StageContext& stageContext);
 
+    void DisplayManual();
+
     ImVec4 Desaturate(const ImVec4 source);
 }
