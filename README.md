@@ -16,6 +16,19 @@ If you place the program (along with the ini) in */usr/bin/*, you will be able t
 
 In case you experience problems with permissions, be sure to check if the program is set to allow execution, and if not change it using *chmod +X TurboVis*.
 
+### OSX
+Unfortunately I don't have a Mac to build the software on myself readily available, so releases for OSX might be a little slower. If you want though, you can build it yourself!
+#### Building on OSX
+1. [Install Homebrew (if you don't have it already). This should be as simple as copy-pasting a terminal command from https://brew.sh/](https://brew.sh/).
+2. Install CMake with `brew install cmake`
+3. Verify cmake has been correctly installed by running `cmake`.
+4. Clone this repository to `/some/path/`, 
+5. `mkdir /some/path/build/`
+6. In `/some/path/build/`, run the command `cmake ..` to generate build files
+7. Build the program with `build`. This should create an executable that can either be run by double-clicking, or by running `./name_of_executable`
+
+
+
 ### Other platforms
 For other platforms, full source code is available, and it should build on most systems.
 As the program runs on an **OpenGL** backend, building requires your system to have dev opengl headers available. For debian-based systems you can for example use *freeglut3-dev*, but windows and apple should have these preinstalled. All other dependencies are already present in the source code.
