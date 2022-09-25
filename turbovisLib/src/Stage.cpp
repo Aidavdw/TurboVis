@@ -281,9 +281,9 @@ void TurboVis::Stage::DisplayWorkAndEnthalpy()
     deltaEnthalpy = deltavTangential * rotationalSpeed; // is the specific work!
     deltaEnthalpyRotor = deltaEnthalpy * degreeOfReaction; // Definition of R
     float deltaEnthalpyStator = deltaEnthalpy - deltaEnthalpyRotor;
-    ImGui::LabelText("Specific work, change in enthalpy", "%.3f J", deltaEnthalpy);
-    ImGui::LabelText("Rotor Specific Work", "%.3f J", deltaEnthalpyRotor);
-    ImGui::LabelText("Stator specific Work", "%.3f J", deltaEnthalpyStator);
+    ImGui::LabelText("Specific work, change in enthalpy", "%.1f J/kg", deltaEnthalpy);
+    ImGui::LabelText("Rotor Specific Work", "%.1f J/kg", deltaEnthalpyRotor);
+    ImGui::LabelText("Stator specific Work", "%.1f J/kg", deltaEnthalpyStator);
 
 
     // Stuff from the dimensionless euler equation

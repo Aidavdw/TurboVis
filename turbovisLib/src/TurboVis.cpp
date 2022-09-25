@@ -13,7 +13,7 @@
 
 void TurboVis::DisplayMainMenu(StageContext& stageContext)
 {
-    ImGui::Begin("TurboVis ver 0.1");
+    ImGui::Begin("TurboVis ver 1.2");
     const char* availableTurbomachineTypes[] = { "Axial Compressor", "Axial Turbine"};
     static int currentTurbomachineType = 0;
     if (ImGui::Combo("Turbomachine type", &currentTurbomachineType, availableTurbomachineTypes, IM_ARRAYSIZE(availableTurbomachineTypes)))
@@ -46,7 +46,11 @@ void TurboVis::DisplayMainMenu(StageContext& stageContext)
     stageContext.stage->VOutColour = Desaturate(stageContext.stage->VColour);
     stageContext.stage->WOutColour = Desaturate(stageContext.stage->WColour);
 
-
+    // Saving the current layout
+    if (ImGui::Button("Save current layout"))
+    {
+        ImGui::SaveIniSettingsToDisk("turbovis.ini");
+    }
 
 
 
