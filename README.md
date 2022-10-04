@@ -34,6 +34,10 @@ For other platforms, full source code is available, and it should build on most 
 As the program runs on an **OpenGL** backend, building requires your system to have dev opengl headers available. For debian-based systems you can for example use *freeglut3-dev*, but windows and apple should have these preinstalled. All other dependencies are already present in the source code.
 Building is straightforward using [CMake](https://cmake.org/), and then compiling it using your favourite compiler.
 
+# Known Issues
+## Windows: Freezing after a couple of seconds
+This is an issue caused by the OpenGL implementations of some newer graphics cards. Try running the program in Windows 8 compatibility mode with full screen optimisations turned off.
+
 ## Libraries used
 
 * [Dear IMGui](https://github.com/ocornut/imgui)
